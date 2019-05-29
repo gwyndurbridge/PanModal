@@ -73,6 +73,7 @@ private extension SampleViewController {
         case userGroups
         case stacked
         case navController
+        case headerTableView
 
 
         var presentable: RowPresentable {
@@ -84,6 +85,7 @@ private extension SampleViewController {
             case .userGroups: return UserGroup()
             case .stacked: return Stacked()
             case .navController: return Navigation()
+            case .headerTableView: return HeaderTable()
             }
         }
 
@@ -120,6 +122,11 @@ private extension SampleViewController {
         struct Stacked: RowPresentable {
             let string: String = "User Groups (Stacked)"
             let rowVC: PanModalPresentable.LayoutType = UserGroupStackedViewController()
+        }
+        
+        struct HeaderTable: RowPresentable {
+            let string: String = "Header Table View"
+            let rowVC: PanModalPresentable.LayoutType = UIStoryboard(name: "HeaderTableView", bundle: nil).instantiateInitialViewController() as! HeaderTableViewController
         }
     }
 }
